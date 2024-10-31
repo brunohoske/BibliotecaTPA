@@ -5,66 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Gestão de Biblioteca</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fdfdfd; 
-            color: #333;
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #282a36;
+            color: #f8f8f2;
             display: flex;
             flex-direction: column;
             height: 100vh;
-            justify-content: space-between;
-        }
-
-        header {
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            margin-bottom: 20px;
         }
 
-        h1 {
-            color: #5A5AFF; 
+        header h1 {
+            color: #ff79c6;
+            font-size: 2.5em;
+            margin-bottom: 40px;
         }
 
-        #botao {
-            flex-grow: 1;
+        .button-container {
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        a {
-            background-color: #5A5AFF;
-            color: white;
-            padding: 15px 30px;
+        .button {
+            background: linear-gradient(135deg, #50fa7b, #6272a4);
+            color: #f8f8f2;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
             text-decoration: none;
-            border-radius: 5px;
-            font-size: 18px;
-            transition: background-color 0.3s;
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
-        a:hover {
-            background-color: #4949E8;
+        .button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #50fa7b, #8be9fd);
         }
 
         footer {
-            text-align: center;
-            margin-top: 20px;
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         footer h1 {
-            font-size: 16px;
-            color: #333;
+            font-size: 1em;
+            color: #bd93f9;
+        }
+
+        footer a {
+            color: #ff79c6;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #50fa7b;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Bem Vindo ao Sistema de Gestão de Biblioteca</h1>
+        <h1>📚 Sistema de Gestão de Biblioteca 📚</h1>
     </header>
-    <section id="botao">
-        <a href="View/Design.html">Ingressar</a>
-    </section>
+    
+    <div class="button-container">
+        <a href="View/Design.html" class="button">Entrar no Sistema</a>
+    </div>
+
     <footer>
         <h1><a href="http://github.com/brunohoske">Bruno Hoske</a></h1>
         <h1><a href="https://github.com/CaioK367">Caio Kfuri</a></h1>

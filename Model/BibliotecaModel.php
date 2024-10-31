@@ -24,26 +24,22 @@ class Livro {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function create($titulo, $autor, $genero, $ano, $quantidade) {
-        $query = "INSERT INTO livros (titulo, autor, genero, ano, quantidade) VALUES (:titulo, :autor, :genero, :ano, :quantidade)";
+    public function create($titulo, $autor, $genero) {
+        $query = "INSERT INTO livros (titulo, autor, genero) VALUES (:titulo, :autor, :genero)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':titulo', $titulo);
         $stmt->bindParam(':autor', $autor);
         $stmt->bindParam(':genero', $genero);
-        $stmt->bindParam(':ano', $ano);
-        $stmt->bindParam(':quantidade', $quantidade);
         return $stmt->execute();
     }
 
-    public function update($id, $titulo, $autor, $genero, $ano, $quantidade) {
-        $query = "UPDATE livros SET titulo = :titulo, autor = :autor, genero = :genero, ano = :ano, quantidade = :quantidade WHERE id = :id";
+    public function update($id, $titulo, $autor, $genero) {
+        $query = "UPDATE livros SET titulo = :titulo, autor = :autor, genero = :genero WHERE id = :id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':titulo', $titulo);
         $stmt->bindParam(':autor', $autor);
         $stmt->bindParam(':genero', $genero);
-        $stmt->bindParam(':ano', $ano);
-        $stmt->bindParam(':quantidade', $quantidade);
         return $stmt->execute();
     }
 

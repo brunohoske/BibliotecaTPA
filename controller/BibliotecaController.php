@@ -5,7 +5,7 @@ class bibliotecaController {
     private $biblioteca;
 
     public function __construct() {
-        $this->biblioteca = new biblioteca();
+        $this->biblioteca = new Livro();
     }
 
     public function listarbibliotecas() {
@@ -17,11 +17,9 @@ class bibliotecaController {
             $titulo = $_POST['titulo'];
             $autor = $_POST['autor'];
             $genero = $_POST['genero'];
-            $ano = $_POST['ano'];
-            $quantidade = $_POST['quantidade'];
 
-            if (!empty($titulo) && !empty($autor) && !empty($genero) && !empty($ano) && !empty($quantidade)) {
-                if ($this->biblioteca->create($titulo, $autor, $genero, $ano, $quantidade)) {
+            if (!empty($titulo) && !empty($autor) && !empty($genero)) {
+                if ($this->biblioteca->create($titulo, $autor, $genero)) {
                     header("Location: ../View/DelUp.php");
                     exit();
                 } else {
@@ -42,11 +40,9 @@ class bibliotecaController {
             $titulo = $_POST['titulo'];
             $autor = $_POST['autor'];
             $genero = $_POST['genero'];
-            $ano = $_POST['ano'];
-            $quantidade = $_POST['quantidade'];
 
-            if (!empty($titulo) && !empty($autor) && !empty($genero) && !empty($ano) && !empty($quantidade)) {
-                if ($this->biblioteca->update($id, $titulo, $autor, $genero, $ano, $quantidade)) {
+            if (!empty($titulo) && !empty($autor) && !empty($genero)) {
+                if ($this->biblioteca->update($id, $titulo, $autor, $genero)) {
                     header("Location: ../View/DelUp.php");
                     exit();
                 } else {

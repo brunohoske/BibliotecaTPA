@@ -42,6 +42,6 @@ class LoginBibliotecaController {
     }
 }
 
-$controller = new LoginController();
+$controller = new LoginBibliotecaController();
 $controller->login();
 ?>

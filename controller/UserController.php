@@ -10,7 +10,7 @@ class UserController {
         
         $database = new Database();
         $this->db = $database->getConnection();
-        $this->usuario = new Usuario($this->db);
+        $this->usuario = new User($this->db);
     }
 
     

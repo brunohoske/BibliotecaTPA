@@ -2,7 +2,6 @@
 session_start(); 
 
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    
     header('Location: login.html');
     exit;
 }
@@ -21,16 +20,52 @@ if (isset($_POST['logout'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Livros</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #fdfdfd;
-            color: #333;
-            margin: 0;
+            background-color: #121212; /* Cor de fundo escura */
+            color: #e0e0e0; /* Texto claro */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             padding: 20px;
         }
 
         h2 {
-            color: #5A5AFF;
+            color: #79a7ff; /* Azul claro */
+            margin-bottom: 20px;
+        }
+
+        .logout-button {
+            background-color: #ff4d4d; /* Vermelho para botão de logout */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .logout-button:hover {
+            background-color: #cc0000; /* Vermelho escuro ao passar o mouse */
+        }
+
+        a {
+            color: #79a7ff; /* Azul claro */
+            text-decoration: none;
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #568ad4; /* Azul escuro ao passar o mouse */
         }
 
         table {
@@ -40,7 +75,7 @@ if (isset($_POST['logout'])) {
         }
 
         table, th, td {
-            border: 1px solid #ccc;
+            border: 1px solid #333; /* Borda escura */
         }
 
         th, td {
@@ -49,34 +84,16 @@ if (isset($_POST['logout'])) {
         }
 
         th {
-            background-color: #E3E3FF;
+            background-color: #1f1f1f; /* Fundo escuro para cabeçalho */
+            color: #e0e0e0; /* Texto claro */
         }
 
         tr:nth-child(even) {
-            background-color: #F8F8F8;
+            background-color: #2a2a2a; /* Fundo escuro alternado */
         }
 
-        a {
-            color: #5A5AFF;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .logout-button {
-            background-color: #ff4d4d;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-
-        .logout-button:hover {
-            background-color: #cc0000;
+        tr:hover {
+            background-color: #444; /* Efeito ao passar o mouse sobre a linha */
         }
     </style>
 </head>
@@ -94,7 +111,6 @@ if (isset($_POST['logout'])) {
             <th>Título</th>
             <th>Autor</th>
             <th>Gênero</th>
-            <th>Status</th>
             <th>Ações</th>
         </tr>
         <?php
@@ -109,7 +125,6 @@ if (isset($_POST['logout'])) {
                     <td>{$biblioteca['titulo']}</td>
                     <td>{$biblioteca['autor']}</td>
                     <td>{$biblioteca['genero']}</td>
-                    <td>{$biblioteca['status']}</td>
                     <td>
                         <a href='Edit.php?id={$biblioteca['id']}'>Editar</a>
                         <a href='DelUp.php?id={$biblioteca['id']}&acao=deletar'>Deletar</a>
@@ -117,13 +132,12 @@ if (isset($_POST['logout'])) {
                 </tr>";
             }
         } else {
-            echo "<tr><td colspan='6'>Nenhum registro encontrado!</td></tr>";
+            echo "<tr><td colspan='5'>Nenhum registro encontrado!</td></tr>";
         }
         ?>
     </table>
 
     <?php
-    
     if (isset($_GET['acao']) && $_GET['acao'] == 'deletar' && isset($_GET['id'])) {
         $controller->deletarbiblioteca($_GET['id']);
     }
